@@ -154,7 +154,8 @@ ARFLAGS =
 ASFLAGS = 
 
 # Extra flags to use when compiling.
-CFLAGS = 
+CFLAGS = \
+-fdata-sections -ffunction-sections
 
 # Extra flags to use when preprocessing.
 #
@@ -169,6 +170,7 @@ CPPFLAGS = \
        -D ARM_MATH_CM0PLUS=true                           \
        -D BOARD=SAMD10_XPLAINED_MINI                      \
        -D EXTINT_CALLBACK_MODE=true                       \
+       -D ADC_CALLBACK_MODE=true                          \
        -D SYSTICK_MODE                                    \
        -D TC_ASYNC=true                                   \
        -D USART_CALLBACK_MODE=true                        \
@@ -176,6 +178,7 @@ CPPFLAGS = \
 
 # Extra flags to use when linking
 LDFLAGS = \
+-Wl,--gc-sections
 
 # Pre- and post-build commands
 PREBUILD_CMD = 
