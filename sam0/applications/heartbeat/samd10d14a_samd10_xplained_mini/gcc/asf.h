@@ -83,6 +83,10 @@
 #include <usart.h>
 #include <usart_interrupt.h>
 
+// From module: SERCOM SPI - Serial Peripheral Interface (Callback APIs)
+#include <spi.h>
+#include <spi_interrupt.h>
+
 // From module: SYSTEM - Clock Management for SAMD09/D10
 #include <clock.h>
 #include <gclk.h>

@@ -80,7 +80,7 @@
 #include "asf.h"
 #include "stdio_serial.h"
 #include "conf_uart_serial.h"
-
+#include "conf_spi.h"
 
 #define STRING_EOL    "\r"
 #define STRING_HEADER "-- Getting Started Example --\r\n" \

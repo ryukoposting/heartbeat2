@@ -52,6 +52,9 @@ TARGET_SRAM = application.elf
 
 # List of C source files.
 CSRCS = \
+       sam0/applications/heartbeat/adc_spi.c \
+       sam0/drivers/sercom/spi/spi.c                      \
+       sam0/drivers/sercom/spi/spi_interrupt.c            \
        common/utils/interrupt/interrupt_sam_nvic.c        \
        common2/services/delay/sam0/systick_counter.c      \
        sam0/applications/heartbeat/main.c                 \
@@ -98,6 +101,7 @@ INC_PATH = \
        sam0/drivers/port                                  \
        sam0/drivers/sercom                                \
        sam0/drivers/sercom/usart                          \
+       sam0/drivers/sercom/spi                            \
        sam0/drivers/system                                \
        sam0/drivers/system/clock                          \
        sam0/drivers/system/clock/clock_samd09_d10_d11     \
