@@ -148,8 +148,8 @@ PROJECT_TYPE        = flash
 DBGFLAGS = 
 
 # Application optimization used during compilation and linking:
-# -O0, -O1, -O2, -O3 or -Os
-OPTIMIZATION = -O1
+# -Og for debug, -Os for release
+OPTIMIZATION = -Os
 
 # Extra flags to use when archiving.
 ARFLAGS = 
@@ -172,13 +172,13 @@ CFLAGS = \
 #   EXT_BOARD  Optional extension board in use, see boards/board.h for a list.
 CPPFLAGS = \
        -D ARM_MATH_CM0PLUS=true                           \
-       -D BOARD=SAMD10_XPLAINED_MINI                      \
        -D EXTINT_CALLBACK_MODE=true                       \
        -D ADC_CALLBACK_MODE=true                          \
        -D SYSTICK_MODE                                    \
        -D TC_ASYNC=true                                   \
        -D USART_CALLBACK_MODE=true                        \
-       -D __SAMD10D14AM__
+       -D __SAMD10D14AM__ \
+       -D BOARD=SAMD10_XPLAINED_MINI
 
 # Extra flags to use when linking
 LDFLAGS = \

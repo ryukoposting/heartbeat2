@@ -56,6 +56,7 @@ int main(void)
 	struct port_config pin;
 
 	system_init();
+  spi_setup();
 
 	/*Configure UART console.*/
 	configure_console();
