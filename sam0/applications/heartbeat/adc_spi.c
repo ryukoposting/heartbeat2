@@ -1,7 +1,4 @@
-/* Falling edge = Trailing edge = sample
-   Rising edge  = Leading edge  = setup
-   rising = 
-   DATA MODE 0 */
+/* SPI MODE = 1*/
 
 /*
  pins:
@@ -9,7 +6,7 @@
     SDI  in
     SDO  out
     DRDY in
- pinmux must be manually set
+ pinmux must be manually set?
  */
 
 #include <asf.h>
@@ -19,9 +16,14 @@ extern "C" {
 #endif
 
 #define PIN_SS PIN_PA15
+  
+#define STROBE_TIMER  TC1
+#define STROBE_PIN    PIN_PA14
+#define STROBE_PINMUX PINMUX_PA14E_TC1_WO0
 
 struct spi_module g_spimod;
 struct spi_slave_inst g_adc_slave;
+struct tc_module g_tcmod;
 
 void spi_callback(struct spi_module *const module)
 {
@@ -50,7 +52,7 @@ void spi_setup()
   spi_slave_inst_get_config_defaults(&slvcfg);
   slvcfg.ss_pin = PIN_SS;
   
-  
+  /* initialize the SPI module */
   switch(spi_init(&g_spimod, SERCOM1, &modcfg)) {
   case STATUS_ERR_DENIED:
   case STATUS_ERR_INVALID_ARG:
@@ -62,6 +64,20 @@ void spi_setup()
   
   
   /* set up PA14 as a strobe, up to 1MHz (good: 500kHz, rated SNR=108dB) */
+  struct tc_config tccfg;
+  tc_get_config_defaults(&tccfg);
+
+  tccfg.counter_size    = TC_COUNTER_SIZE_16BIT;
+  tccfg.wave_generation = TC_WAVE_GENERATION_MATCH_FREQ;
+  tccfg.counter_16_bit.compare_capture_channel[0] = 0x10;
+
+  tccfg.pwm_channel[0].enabled = true;
+  tccfg.pwm_channel[0].pin_out = STROBE_PIN;
+  tccfg.pwm_channel[0].pin_mux = STROBE_PINMUX;
+
+  tc_init(&g_tcmod, STROBE_TIMER, &tccfg);
+
+  tc_enable(&g_tcmod);
   
   /* set up PA15 as digital input. read when PA15 goes low. */
   

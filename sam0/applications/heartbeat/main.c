@@ -66,6 +66,8 @@ int main(void)
 		write_to_terminal(count);
 		count++;
 	}
+	
+	while(1);
 }
 
 #ifdef __cplusplus
