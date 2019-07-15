@@ -149,7 +149,7 @@ DBGFLAGS =
 
 # Application optimization used during compilation and linking:
 # -Og for debug, -Os for release
-OPTIMIZATION = -Os
+OPTIMIZATION = -O0
 
 # Extra flags to use when archiving.
 ARFLAGS = 
