@@ -42,6 +42,23 @@
 #  define CONF_SPI_SLAVE_ENABLE      false
 #  define SPI_CALLBACK_MODE          true
 
+#define PIN_SYNC      PIN_PA24
+
+#define PIN_DRDY      PIN_PA15
+
+#define STROBE_TIMER  TC1
+#define STROBE_PIN    PIN_PA14
+#define STROBE_PINMUX PINMUX_PA14E_TC1_WO0
+
+// void adc_strobe();
+void strobe_pulse();
+
+void adc_reset();
+
+int adc_ready();
+
+int adc_read();
+
 //[definition_master]
 // #define CONF_MASTER_SPI_MODULE  EXT1_SPI_MODULE
 // #define CONF_MASTER_SS_PIN      EXT1_PIN_SPI_SS_0
