@@ -1,7 +1,7 @@
 #include "asf.h"
 #include "stdio_serial.h"
 #include "conf_uart_serial.h"
-  
+#include "string.h" 
 
 
 #ifdef __cplusplus
@@ -12,7 +12,7 @@ static struct usart_module cdc_uart_module;
 
 #define TC_COUNT_VALUE 55535
 //Initializes UART
-static void configure_console(void)
+void configure_console(void)
 {
 	struct usart_config usart_conf;
 
@@ -33,3 +33,14 @@ void write_to_terminal(char *bpm)
 {
 	usart_write_buffer_wait(&cdc_uart_module, bpm, strlen(bpm));
 }
+
+void  int_to_string(int x)
+{
+	static char bpm_data[32] = {};
+	itoa(x, bpm_data, 16);	//Converts input number into a base 10 string
+	write_to_terminal(bpm_data);	//Returns pointer to string bpm		
+}
+
+#ifdef _cplusplus
+}
+#endif

@@ -78,8 +78,8 @@ CSRCS = \
        sam0/utils/cmsis/samd10/source/system_samd10.c     \
        sam0/utils/stdio/read.c                            \
        sam0/utils/stdio/write.c                           \
-       sam0/utils/syscalls/gcc/syscalls.c
-
+       sam0/utils/syscalls/gcc/syscalls.c		  \
+       sam0/applications/heartbeat/uart.c
 # List of assembler source files.
 ASSRCS = 
 
