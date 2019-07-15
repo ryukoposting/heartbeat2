@@ -86,7 +86,7 @@ void spi_setup()
   pcfg.input_pull = PORT_PIN_PULL_NONE;
   port_pin_set_config(PIN_DRDY, &pcfg);
   
-  /* set up PA24 as digital output. drive low to do SYNC. */
+  
   struct port_config pcfg3;
   port_get_config_defaults(&pcfg3);
   pcfg.direction = PORT_PIN_DIR_OUTPUT;

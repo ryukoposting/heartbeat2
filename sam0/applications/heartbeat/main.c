@@ -16,9 +16,9 @@ int main(void)
 {
   system_init();
   spi_setup();
- struct port_config pin;
+  struct port_config pin;
   /*Configure UART console.*/
-   configure_console();
+  configure_console();
 //   char count = 0;
 //   while(count != 15)
 //   {
@@ -37,19 +37,6 @@ int main(void)
     adcval = adc_read();
     adc_reset();
   }
-  
-//   while (adc_ready()) {
-//     adc_strobe();
-//     for (int i = 0; i < 100; ++i) asm("nop");
-//   }
-//   
-//   while (1) {
-//     while (!adc_ready()) {
-//       adc_strobe();
-//     }
-//     adcval = adc_read();
-//     for (int i = 0; i < 0xFFFF; ++i) asm("nop");
-//   }
   
   while(1);
 }
