@@ -4,14 +4,6 @@
 #include "conf_spi.h"
   
 
-<<<<<<< HEAD
-=======
-#define STRING_EOL    "\r"
-#define STRING_HEADER "-- Getting Started Example --\r\n" \
-    "-- "BOARD_NAME" --\r\n" \
-    "-- Compiled: "__DATE__" "__TIME__" --\r\n" \
-    "-- Pressing and release button SW0 should make LED0 on and off --"STRING_EOL
->>>>>>> upstream/master
 
 #ifdef __cplusplus
 extern "C" {
