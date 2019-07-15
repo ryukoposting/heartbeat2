@@ -23,8 +23,6 @@ void configure_console(void)
 	usart_conf.pinmux_pad2 = PINMUX_UNUSED;
 	usart_conf.pinmux_pad3 = PINMUX_UNUSED;
 	usart_conf.baudrate    = CONF_STDIO_BAUDRATE;
-
-// 	stdio_serial_init(&cdc_uart_module, CONF_STDIO_USART_MODULE, &usart_conf);
 	usart_init(&cdc_uart_module, SERCOM0, &usart_conf);
 	usart_enable(&cdc_uart_module);
 }
