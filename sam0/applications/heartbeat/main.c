@@ -4,14 +4,22 @@
 #include "conf_spi.h"
 #include "uart.h" 
 
+#define BEAT_RISING_THRESHOLD 0x4000
+#define BEAT_FALLING_THRESHOLD 0x2000
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+  
+typedef enum BeatState {
+  BEATSTATE_LOW,
+  BEATSTATE_HIGH
+};
 
 #define TC_COUNT_VALUE 55535
 volatile int adcval = 0;
+volatile BeatState bs = BEATSTATE_LOW;
 int main(void)
 {
   system_init();
@@ -32,7 +40,19 @@ int main(void)
   /* THIS WORKS */
   while (1) {
     adcval = adc_read();
-    int_to_string(123456);
+    switch (bs) {
+    case BEATSTATE_HIGH:
+      if (adcval < BEAT_FALLING_THRESHOLD)
+        bs = BEATSTATE_LOW;
+      break;
+    case BEATSTATE_LOW:
+      if (adcval > BEAT_RISING_THRESHOLD) {
+        bs = BEATSTATE_HIGH;
+        write_to_terminal("a");
+      }
+      break;
+    }
+//     int_to_string(123456);
     adc_reset();
   }
   
