@@ -26,8 +26,6 @@ int main(void)
 //     count++;
 //   }
   
-  volatile int x = 0;
-  
   adc_reset();
   
   asm("nop");
