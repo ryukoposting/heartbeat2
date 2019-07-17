@@ -34,7 +34,7 @@ int main(void)
   /* THIS WORKS */
   while (1) {
     adcval = adc_read();
-    int_to_string(adcval);
+    int_to_string(123456);
     adc_reset();
   }
   
