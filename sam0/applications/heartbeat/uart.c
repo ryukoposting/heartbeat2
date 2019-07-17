@@ -17,7 +17,7 @@ void configure_console(void)
 	struct usart_config usart_conf;
 
 	usart_get_config_defaults(&usart_conf);
-	usart_conf.mux_setting = CONF_STDIO_MUX_SETTING;
+	usart_conf.mux_setting = USART_RX_1_TX_0_XCK_1;
 	usart_conf.pinmux_pad0 = PINMUX_PA04D_SERCOM0_PAD0;
 	usart_conf.pinmux_pad1 = PINMUX_PA05D_SERCOM0_PAD1;
 	usart_conf.pinmux_pad2 = PINMUX_UNUSED;

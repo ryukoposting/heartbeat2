@@ -16,7 +16,6 @@ int main(void)
 {
   system_init();
   spi_setup();
-  struct port_config pin;
   /*Configure UART console.*/
   configure_console();
 //   char count = 0;
@@ -33,6 +32,7 @@ int main(void)
   /* THIS WORKS */
   while (1) {
     adcval = adc_read();
+    int_to_string(123456);
     adc_reset();
   }
   
